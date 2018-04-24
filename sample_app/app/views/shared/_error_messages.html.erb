@@ -1,15 +1,15 @@
 <!-- Rails Partial that handles and displays the error message on to of the
      sign up form -->
 
-<% if @user.errors.any? %>
-<div id="error_explanation">
-  <div class="alert alert-danger">
-    The form contains <%= pluralize(@user.errors.count, "error") %>
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(object.errors.count, "error") %>.
+    </div>
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
   </div>
-  <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
 <% end %>
